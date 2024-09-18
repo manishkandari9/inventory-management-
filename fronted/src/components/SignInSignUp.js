@@ -3,26 +3,23 @@ import { EyeIcon, EyeOffIcon, MailIcon, LockIcon, UserIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 
 const SignInSignUp = () => {
-  const [isLogin, setIsLogin] = useState(true); // यह बताता है कि लॉगिन फॉर्म दिखाना है या साइन अप
-  const [showPassword, setShowPassword] = useState(false); // पासवर्ड को दिखाने या छुपाने के लिए
+  const [isLogin, setIsLogin] = useState(true); 
+  const [showPassword, setShowPassword] = useState(false); 
   const [formData, setFormData] = useState({
-    email: '',
+    email: '',    
     password: '',
     name: '',
   });
 
-  const navigate = useNavigate(); // राउटिंग के लिए
+  const navigate = useNavigate(); 
 
-  // फॉर्म सबमिट करने के लिए हैंडलर
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(isLogin ? 'Login' : 'Signup', formData);
 
-    // लॉगिन या साइनअप की प्रक्रिया के बाद रीडायरेक्ट करें
     navigate('/components/Management');
   };
 
-  // फॉर्म के इनपुट बदलने पर डेटा अपडेट करने के लिए हैंडलर
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -31,10 +28,9 @@ const SignInSignUp = () => {
     }));
   };
 
-  // फॉर्म टॉगल करना (लॉगिन से साइनअप और साइनअप से लॉगिन)
   const toggleForm = () => {
     setIsLogin(!isLogin);
-    setFormData({ email: '', password: '', name: '' }); // फॉर्म रीसेट करें
+    setFormData({ email: '', password: '', name: '' }); 
   };
 
   return (
